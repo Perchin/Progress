@@ -1,0 +1,46 @@
+.main {
+  width: '200px';
+  height: '100px';
+  margin-top: 0px;
+  margin-left: 0px;
+}
+
+.main2 {
+  display: flex;
+  align-items: center;
+}
+
+.main3 {
+  margin-left: 10px;
+  padding: 50px;
+}
+
+.element {
+  margin-bottom: 30px;
+}
+
+.element__info {
+  margin-left: 20px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+th, td {
+  width: calc(100% / 9); /* 9 - количество колонок в таблице */
+  text-align: center;
+  padding: 10px;
+  border: 1px solid black;
+  word-break: break-all;
+}
+
+/* Для мобильных устройств */
+@media only screen and (max-width: 768px) {
+  th, td {
+    font-size: 12px;
+    padding: 5px;
+  }
+}

@@ -1,0 +1,87 @@
+import React, { useEffect, useState } from "react";
+import s from './Disciplina2.module.css'
+
+const Disciplina2 = () => {
+
+    const [data, setData] = useState('')
+    const [data2, setData2] = useState('')
+
+    useEffect(() => {
+        getDisciplina()
+        getDisc()
+    }, []);
+
+    let getDisciplina = async () => {
+        let response = await fetch('https://def6dcc9-b637-4e72-975e-989d3170335e.mock.pstmn.io/getNumberOfAssessedDisciplines')
+        let data = await response.json()
+        console.log('DATA', data)
+        setData(data)
+    }
+
+    let getDisc = async () => {
+        let response = await fetch('https://def6dcc9-b637-4e72-975e-989d3170335e.mock.pstmn.io/getDisciplines/data/2018')
+        let data = await response.json()
+        console.log('DATA2', data2)
+        setData2(data)
+    }
+
+    const renderMessages = () => {
+        data2.map(({ name, q, numberOfVoted, countOfStudents, countOfTeachers }) => {
+            return (
+                <div className={s.element}>
+                    <h5>{name}</h5>
+                    <div className={s.element__info}>
+                        <h6>Средняя оценка: {q}</h6>
+                        <h6>Кол-во учащихся по дисциплине: {countOfStudents}</h6>
+                        <h6>Кол-во преподавателей: {countOfTeachers}</h6>
+                    </div>
+                </div>
+            )
+
+        });
+    }
+
+    return (
+
+        <div className={s.main}>
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+                <div className={s.main}>
+
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1>Свод по дисциплинам</h1>
+                    </div>
+
+                    <h3>Количество оцененных дисциплин</h3>
+                    <div className={s.main2}>
+                        <div className={s.main3}>
+                            <h5>Кол-во дисциплин по уч плану:</h5>
+                            <h5>{data.total}</h5>
+                            <h5>Кол-во дисциплин, которые оценили студенты:</h5>
+                            <h5>{data.count}</h5>
+                        </div>
+                    </div>
+                    <div div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h3>Оценки дисциплин</h3>
+                    </div>
+                    <div className="app">
+                        <div className="row">
+                            <div className="mixed-chart">
+                                <div className={s.main__elements}>
+                                    {renderMessages()}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </main>
+
+        </div>
+    );
+}
+
+export default Disciplina2;
