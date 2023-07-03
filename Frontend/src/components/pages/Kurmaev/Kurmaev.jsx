@@ -10,7 +10,7 @@ const Kurmaev = (props) => {
 
 				<div className={s.main}>
                   
-					купи колбасы заебал
+					Заебал, не куплю
 
 				</div>
 			</main>
