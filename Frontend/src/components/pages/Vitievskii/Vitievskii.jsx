@@ -14,7 +14,7 @@ const Vitievskii = (props) => {
 
 				<div className={s.main}>
        
-				 пися кака
+				 Раиль, купи колбасу Игорю, пожалуйста!!!
 
 				</div>
 			</main>
